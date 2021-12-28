@@ -1,0 +1,151 @@
+<!-- Menu -->
+
+<header>
+    <nav>
+        <!-- menu hamburguer -->
+
+        <div class="mobile-menu">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+
+        <div class="logo">
+            <strong>COMUNIDADE RUAH</strong>
+        </div>
+
+        <ul class="nav-list">
+
+            <!-- <li><a href="/">PAGINAS</a>
+
+                <ul class="submenu">
+                    <li><a href="/quem-somos">QUEM SOMOS</a></li>
+                    <li><a href="/como-ajudar">COMO AJUDAR</a></li>
+                    <li><a href="#">EVENTOS</a>
+                        <ul class="subevento">
+
+                            <li><a href="/poderoso-deus">PODEROSO DEUS</a></li>
+                            <li><a href="/pentecostes-jovem">PENTECOSTES JOVEM</a></li>
+                        
+                        </ul>
+                    </li>
+                    
+                </ul> -->
+            <li><a href="/">HOME</a>
+
+            <li><a href="#">RUAH</a>
+
+                    <!-- <ul class="submenu">
+                        <li><a href="/historico">HISTORICO</a></li>
+                        <li><a href="/espiritualidade">ESPIRITUALIDADE</a></li>
+                        <li><a href="#">LOJA CASA DE MARIA</a></li>
+                        <li><a href="/contatos">CONTATOS</a></li>
+
+                    </ul> -->
+
+            </li>
+                                                
+            <li><a href="">VOCAÇÃO</a>
+
+                    <!-- <ul class="submenu">
+                        <li><a href="/crepitar">CREPITAR</a></li>
+                        <li><a href="/discipulado-missao">DISCIPULADO E MISSÃO</a></li>
+                        <li><a href="/consagracao">CONSAGRAÇÃO</a></li>                                                        
+                    </ul> -->
+
+            </li>
+                            
+                <li><a href="/formacao">FORMAÇÃO</a></li>
+                <li><a href="/onde-estamos">ONDE ESTAMOS</a></li>
+                <li><a href="/contatos">CONTATOS</a></li>
+                            
+        </ul>
+
+        <form action="" class="form-inline">
+            <!-- mr = margin right ml = margin left -->
+            <input type="search" class="form-control ml-6 mr-2" placeholder="Buscar...">
+            <button class="btn btn-warning" type="submit">OK</button>
+        </form>
+
+    </nav>
+
+    
+</header>
+
+<script>
+
+    class MobileNavBar {
+
+        constructor(mobileMenu, navList, navLinks, header) {
+            this.mobileMenu = document.querySelector(mobileMenu);
+            this.navList = document.querySelector(navList);
+            this.navLinks = document.querySelectorAll(navLinks);
+            this.logo = document.querySelector('.logo');
+            this.activeClass = 'active';
+            this.handleClick = this.handleClick.bind(this); // a referencia em handleClick sera a classe
+        }
+
+        animateLinks() {
+
+            this.navLinks.forEach((link,index) => {
+
+                // verificando se o link possui uma propriedade animation no dom
+
+                link.style.animation ? (link.style.animation = '') : 
+                (link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`);
+
+            });
+        }
+
+        handleClick() {
+
+            console.log(this);
+
+            this.navList.classList.toggle(this.activeClass); // toggle verifica se há a classe especifica, se tiver, deixa, se nao, cria
+            this.mobileMenu.classList.toggle(this.activeClass);
+            this.animateLinks();
+
+        }
+
+        addClickEvent() {
+
+            this.mobileMenu.addEventListener('click', this.handleClick);
+        }
+
+        clickOut() {
+
+            this.navList.addEventListener('mouseleave', () => {
+
+                if ($(this.navList).hasClass('active')) {
+
+                    this.navList.classList.remove(this.activeClass);
+                    this.mobileMenu.classList.remove(this.activeClass);
+                    this.animateLinks();
+
+                }
+
+            });
+
+            
+        }
+
+        init() {
+
+            if (this.mobileMenu) {
+
+                this.addClickEvent();
+            }
+
+            return this;
+        }
+
+
+    }
+
+    const mobileNavBar = new MobileNavBar('.mobile-menu','.nav-list','.nav-list li','header');
+
+    mobileNavBar.init();
+    mobileNavBar.clickOut();
+
+
+</script>
