@@ -6964,6 +6964,7 @@ button.close {
   cursor: pointer;
   background-color: #000 \9;
   background-color: transparent;
+  
 }
 .carousel-indicators .active {
   margin: 0;
