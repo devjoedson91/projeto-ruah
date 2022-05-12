@@ -17,7 +17,7 @@ A aplicação consiste em um Web Site com publicações de conteúdos inerentes 
 - Mysql
 
 ## Front end
-- HTML / CSS / EJS / JS
+- Bootstrap / EJS / JS
 
 ## Implantação em produção
 - React Js
